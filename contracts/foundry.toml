@@ -1,0 +1,40 @@
+[profile.default]
+src = "contract"
+out = "out"
+libs = ["lib"]
+test = "test"
+# Audit proofs of concept assert undesirable behaviour; run them explicitly with --match-path "test/audit/*"
+no_match_path = "test/audit/*"
+solc = "0.8.28"
+optimizer = true
+optimizer_runs = 200
+remappings = [
+    "@openzeppelin/contracts/=lib/openzeppelin-contracts/contracts/",
+    "@openzeppelin/contracts-upgradeable/=lib/openzeppelin-contracts-upgradeable/contracts/",
+    "forge-std/=lib/forge-std/src/",
+]
+
+# Formatting is decided by forge fmt; forge fmt --check must pass before every commit
+[fmt]
+line_length = 120
+tab_width = 4
+bracket_spacing = false
+int_types = "long"
+quote_style = "double"
+number_underscore = "thousands"
+multiline_func_header = "attributes_first"
+sort_imports = true
+
+# forge lint must report zero warnings
+[lint]
+severity = ["high", "med", "low", "info", "gas"]
+lint_on_build = true
+
+[invariant]
+runs = 64
+depth = 32
+fail_on_revert = false
+
+# Fork tests: forge test --fork-url bsc
+[rpc_endpoints]
+bsc = "https://bsc-dataseed.binance.org"

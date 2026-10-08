@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /*?lab=1
+Disallow: /*&lab=1
+
+Sitemap: https://uploop.io/sitemap.xml

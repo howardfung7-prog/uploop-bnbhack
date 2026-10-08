@@ -1,0 +1,14 @@
+{
+  "id": "/",
+  "name": "UPLOOP · Open Index Strategy Platform",
+  "short_name": "UPLOOP",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "theme_color": "#0A0906",
+  "background_color": "#0A0906",
+  "icons": [
+    { "src": "/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}

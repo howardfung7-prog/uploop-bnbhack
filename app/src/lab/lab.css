@@ -1,0 +1,83 @@
+/* The status bench's own layout (§71.109).
+   🔴 This file only ever writes `.lab-*`; not one rule may touch a selector under inspection. If the bench's styles
+   leak into the site's own classes, it hides the very faults it is meant to find — which is worse than not having it.
+   Colours all come from the site's tokens (--ground / --ink / --rule / --live …), so this layer follows a theme switch
+   and there is never an unreadable sandwich of "dark toolbar, light content". */
+
+.lab { min-height: 100vh; }
+
+/* A heavy rule between cases, so two cells' contents cannot stick together and read as one */
+.lab-case { border-bottom: 3px solid var(--rule); }
+.lab-case:last-child { border-bottom: 0; }
+
+/* Title bar: deliberately unlike anything on the site (a magenta bar plus small monospace), so tool and inspected interface are told apart at a glance */
+.lab-head {
+  position: relative;
+  padding: 10px 120px 10px 16px;
+  border-left: 4px solid #FF3DA6;
+  background: color-mix(in srgb, var(--ink) 6%, transparent);
+}
+.lab-head h2 { margin: 2px 0 0; font: 600 15px/1.35 var(--sans); }
+.lab-head p { margin: 4px 0 0; font: 400 12px/1.5 var(--sans); color: var(--dim, var(--ink)); opacity: .78; max-width: 78ch; }
+.lab-tag { font: 500 10px/1 var(--mono); letter-spacing: .12em; text-transform: uppercase; opacity: .6; }
+.lab-solo {
+  position: absolute; top: 10px; right: 16px;
+  padding: 4px 12px; border: 1px solid var(--rule); background: transparent;
+  font: 500 11px/1 var(--mono); border-radius: 2px;
+}
+
+/* The inspected interface itself. overflow is not set to hidden: horizontal overflow is one of the faults being looked for (§71.106) */
+.lab-body { padding: 0 0 24px; }
+
+/* Toolbar, bottom right */
+.lab-bar {
+  position: fixed; right: 12px; bottom: 12px; z-index: 9000;
+  display: flex; align-items: center; gap: 6px;
+  padding: 6px 8px; border: 1px solid var(--rule); border-radius: 4px;
+  background: var(--ground); box-shadow: 0 2px 12px rgba(0, 0, 0, .35);
+  font: 500 12px/1 var(--mono);
+}
+.lab-bar button, .lab-bar a {
+  padding: 5px 9px; border: 1px solid var(--rule); border-radius: 2px;
+  background: transparent; color: inherit; text-decoration: none; font: inherit;
+}
+.lab-bar button.on { border-color: var(--live); color: var(--live); }
+.lab-count { opacity: .6; padding-right: 2px; }
+
+/* Contents: floats above the content rather than squeezing it — narrow the body and the media queries and alignment lines all go false */
+.lab-rail-btn {
+  position: fixed; left: 12px; bottom: 12px; z-index: 9001;
+  padding: 7px 12px; border: 1px solid var(--rule); border-radius: 4px;
+  background: var(--ground); color: inherit; font: 500 12px/1 var(--mono);
+}
+.lab-rail {
+  position: fixed; left: 12px; bottom: 52px; z-index: 9001;
+  width: 268px; max-height: 76vh; overflow: auto;
+  padding: 10px; border: 1px solid var(--rule); border-radius: 4px;
+  background: var(--ground); box-shadow: 0 6px 28px rgba(0, 0, 0, .45);
+}
+.lab-rail button {
+  display: block; width: 100%; text-align: left;
+  padding: 5px 8px; border: 0; background: transparent; color: inherit;
+  font: 400 12px/1.4 var(--sans); border-radius: 2px;
+}
+.lab-rail button:hover { background: color-mix(in srgb, var(--ink) 10%, transparent); }
+.lab-rail button.on { color: var(--live); }
+.lab-g { font: 600 12px/1.4 var(--sans) !important; }
+.lab-g small { float: right; opacity: .5; font: 400 11px/1.4 var(--mono); }
+.lab-grp { margin-top: 8px; border-top: 1px solid var(--rule); padding-top: 6px; }
+.lab-rail ul { list-style: none; margin: 2px 0 0; padding: 0 0 0 8px; }
+
+.lab-none { padding: 40px 16px; font: 400 14px/1.6 var(--sans); }
+.lab-none button { margin-left: 8px; border: 1px solid var(--rule); background: transparent; color: inherit; padding: 4px 10px; }
+
+/* The "open it" button in the dialogs group */
+.lab-btn { margin: 24px 0; padding: 9px 18px; border: 1px solid var(--rule); background: transparent; color: inherit; font: 500 13px/1 var(--mono); }
+
+.lab-race-preview { padding: 18px 0 56px; }
+.lab-race-preview-tools { margin: 0 0 18px; padding: 16px; border: 1px solid var(--rule-soft); border-radius: 10px; background: var(--surface-2); color: var(--ink); }
+.lab-race-preview-tools > b { font-size: 13px; }
+.lab-race-preview-tools p { margin: 8px 0; font-size: 12px; line-height: 1.6; }
+.lab-race-preview-tools > div { display: flex; gap: 8px; flex-wrap: wrap; margin: 12px 0; }
+.lab-race-preview-tools button { padding: 7px 10px; color: inherit; border: 1px solid var(--rule-soft); background: var(--surface); border-radius: 6px; font: inherit; font-size: 12px; cursor: pointer; }
+.lab-race-preview-tools button.on { color: var(--rally); border-color: currentColor; }

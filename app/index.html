@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>UPLOOP · Open Index Strategy Platform</title>
+    <!-- Keep the search and social summaries aligned. Hash routes share this canonical URL. -->
+    <meta name="description" content="Create long and short multi-asset index strategies on UPLOOP. Compete in strategy arenas and 100-point perpetual races, and explore asset staking on BNB Chain." />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <link rel="canonical" href="https://uploop.io/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="UPLOOP" />
+    <meta property="og:url" content="https://uploop.io/" />
+    <meta property="og:title" content="UPLOOP · Open Index Strategy Platform" />
+    <meta property="og:description" content="Create long and short multi-asset index strategies on UPLOOP. Compete in strategy arenas and 100-point perpetual races, and explore asset staking on BNB Chain." />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:image" content="https://uploop.io/og-image.png" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="UPLOOP" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="UPLOOP · Open Index Strategy Platform" />
+    <meta name="twitter:description" content="Create long and short multi-asset index strategies on UPLOOP. Compete in strategy arenas and 100-point perpetual races, and explore asset staking on BNB Chain." />
+    <meta name="twitter:image" content="https://uploop.io/og-image.png" />
+    <meta name="twitter:image:alt" content="UPLOOP" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Organization",
+            "@id": "https://uploop.io/#organization",
+            "name": "UPLOOP",
+            "url": "https://uploop.io/",
+            "logo": "https://uploop.io/icon-512.png"
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://uploop.io/#website",
+            "name": "UPLOOP",
+            "url": "https://uploop.io/",
+            "inLanguage": ["en", "zh"],
+            "publisher": { "@id": "https://uploop.io/#organization" }
+          }
+        ]
+      }
+    </script>
+    <!-- 🔴 Icons. The SVG alone was not enough: a wallet's in-app DApp browser is an Android
+         WebView / iOS WKWebView, and those do not rasterise SVG favicons, so the browsing-history
+         row came back blank. Every entry below is a raster fallback for exactly that case, all
+         generated from brand/uploop-icon-512.png.
+         /favicon.ico matters most — a WebView asks for it at the site root whether or not any
+         <link> says so — and "shortcut icon" is the spelling the oldest WebViews look for.
+         Modern browsers still pick the SVG: it is the only one marked sizes="any". -->
+    <link rel="icon" href="/favicon.ico" sizes="48x48" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" sizes="any" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png" />
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <!-- Named manifest.json, not site.webmanifest: nginx:1.27-alpine's mime.types has no entry for
+         the .webmanifest extension, so that name would be served as application/octet-stream and
+         some WebViews drop it. ".json" is already mapped and already gzipped (docker/nginx.conf:26).
+         It carries no "description": that text is the §71.125 hand-copy of brandCopy.ts and it
+         already lives in two places (the meta tag above and the source constant) — a third copy is
+         one more thing to forget. JSON has no comments, so the reason is recorded here.
+         No icon is marked purpose="maskable" either: the loop's arrow tip sits near the edge of the
+         tile and a circular mask could clip it. That needs a purpose-drawn 512 with a wider margin. -->
+    <link rel="manifest" href="/manifest.json" />
+    <meta name="theme-color" content="#0A0906" />
+    <!-- Theme preset (§71.102): must stay ahead of the stylesheet and must be a synchronous script —
+         the attribute has to be set before the first paint, otherwise a reload paints one frame in the
+         default dark theme and then jumps to light. Nothing stored means dark (§14: the dark ground is
+         the site's own colour, it does not follow the OS setting). If storage is blocked (private mode)
+         the try swallows it and we fall back to dark. -->
+    <script>
+      try {
+        if (localStorage.getItem("uploop-theme") === "light") {
+          document.documentElement.dataset.theme = "light";
+          document.querySelector('meta[name="theme-color"]').content = "#F4F0E4";
+        }
+      } catch (e) {}
+    </script>
+    <!-- Apply language before paint: saved choice, then browser preference, then English.
+         Only explicit user choices are persisted. i18n.ts reads the resulting html attribute. -->
+    <script>
+      (function () {
+        var saved;
+        try { saved = localStorage.getItem("uploop-lang"); } catch (e) {}
+        var preferred = (navigator.languages && navigator.languages[0]) || navigator.language || "en";
+        document.documentElement.lang = saved === "en" || saved === "zh"
+          ? saved : /^zh(?:-|$)/i.test(preferred) ? "zh" : "en";
+      })();
+    </script>
+    <!-- Preview pages are not public search destinations. Hash-only ops routing is also
+         handled in main.tsx when navigation changes without a reload. -->
+    <script>
+      if (new URLSearchParams(location.search).get("lab") === "1" || /^#ops(?:\/|$)/.test(location.hash)) {
+        document.querySelector('meta[name="robots"]').content = "noindex, nofollow";
+        document.documentElement.classList.add("boot-plain");
+      }
+    </script>
+    <!-- First-paint shell (§71.174): the static top bar and a loading line inside #root, shown from the moment
+         the stylesheet arrives until the script bundle has downloaded and React replaces #root's contents. On a
+         weak network that gap is seconds, and without this it is a blank ground. It reuses the real top bar's
+         classes, so it lands exactly where the live one will. The preview and ops pages have their own layouts
+         and show only the ground (boot-plain, set just above). -->
+    <style>
+      .boot-plain .boot-shell { display: none; }
+      .boot-line { height: 2px; margin: 0 auto; max-width: 1360px; overflow: hidden; }
+      .boot-line::after {
+        content: ""; display: block; width: 30%; height: 100%;
+        background: var(--live, #D4A537); opacity: .7;
+        animation: boot-run 1.4s ease-in-out infinite;
+      }
+      @keyframes boot-run { from { transform: translateX(-100%); } to { transform: translateX(340%); } }
+      @media (prefers-reduced-motion: reduce) { .boot-line::after { animation: none; width: 100%; opacity: .25; } }
+    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=IBM+Plex+Mono:wght@400;500;600&display=swap" />
+  </head>
+  <body>
+    <div id="root">
+      <div class="boot-shell" aria-busy="true">
+        <header class="topbar">
+          <div class="tb-in">
+            <span class="brand" aria-label="UPLOOP">
+              <svg class="mark" viewBox="0 0 100 100" aria-hidden="true"><g transform="translate(46.08,51.47) scale(0.9796)"><path fill="none" stroke="currentColor" stroke-width="12" d="M -1 0 A 9 9 0 0 0 -19 0 A 19 19 0 0 0 19 0 A 29 29 0 0 0 -39 0 A 39 39 0 0 0 39 0 V -34"/><circle cx="-1" cy="0" r="6" fill="currentColor"/><path fill="currentColor" d="M 53 -34 L 39 -48 L 25 -34 Z"/></g></svg>
+              <svg class="brand-word" viewBox="-3 -3 199 48" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="9" stroke-linejoin="miter"><path d="M 4.5 0 V 28.5 A 9 9 0 0 0 22.5 28.5 V 0"/><path d="M 38.5 42 V 4.5 H 48.5 A 8 8 0 0 1 48.5 20.5 H 38.5"/><path d="M 72.5 0 V 37.5 H 91"/><path d="M 102.5 13.5 V 28.5 A 9 9 0 0 0 120.5 28.5 V 13.5 A 9 9 0 0 0 102.5 13.5 Z"/><path d="M 136.5 13.5 V 28.5 A 9 9 0 0 0 154.5 28.5 V 13.5 A 9 9 0 0 0 136.5 13.5 Z"/><path d="M 170.5 42 V 4.5 H 180.5 A 8 8 0 0 1 180.5 20.5 H 170.5"/></g></svg>
+            </span>
+          </div>
+        </header>
+        <div class="boot-line"></div>
+      </div>
+      <noscript>
+        <h1>UPLOOP · Open Index Strategy Platform</h1>
+        <p>Create multi-asset index strategies, choose long or short on each asset, and compete in strategy arenas on BNB Chain.</p>
+        <p>Enable JavaScript to explore the platform and connect your wallet.</p>
+      </noscript>
+    </div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

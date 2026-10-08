@@ -1,0 +1,60 @@
+.home .hero-in { padding-top: 32px; }
+.home-strategy-showcase {
+  width: min(100%, 720px); margin: 0 auto 42px; padding: 22px 28px 18px;
+  border: 1px solid var(--rule); border-radius: 24px; overflow: hidden;
+  background: radial-gradient(ellipse at 40% 0%, #e4b34418, transparent 70%), var(--surface, #101114);
+  box-shadow: 0 24px 70px #0003, inset 0 1px 0 #e4b34424;
+}
+.home-demo-heading { display: flex; align-items: center; gap: 8px; color: var(--ink-soft); font: 600 12px var(--mono); }
+.home-demo-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--live); box-shadow: 0 0 12px #f0c55a66; }
+.home-demo-stage { padding-top: 26px; }
+.home-demo-combination { min-width: 0; }
+.home-demo-total { text-align: center; }
+.home-demo-return-label { display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 8px; font: 500 12px var(--sans); color: var(--ink-mute); }
+.home-demo-inline-rank { display: inline-block; min-width: 3ch; color: var(--live); font: 750 14px var(--mono); animation: home-rank-change .3s ease-out; }
+@keyframes home-rank-change { from { opacity: .3; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
+@media (prefers-reduced-motion: reduce) { .home-demo-inline-rank { animation: none; } }
+.home-demo-total > strong { display: block; font: 750 clamp(40px, 6vw, 64px)/1.1 var(--mono); font-variant-numeric: tabular-nums; letter-spacing: -.055em; color: #57d9b0; text-shadow: 0 0 30px #57d9b02a; }
+.home-demo-total[data-negative="true"] > strong, .home-demo-leg strong[data-negative="true"] { color: #f17e89; }
+.home-demo-trace { display: block; width: 100%; height: 100px; overflow: visible; margin: 4px 0; }
+.home-demo-baseline { fill: none; stroke: var(--rule); stroke-dasharray: 3 6; }
+.home-demo-trail { fill: none; stroke: var(--live); stroke-width: 2; stroke-linecap: round; }
+.home-demo-trace circle { fill: var(--live); filter: drop-shadow(0 0 5px #e4b34499); }
+.home-demo-basket { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); padding: 16px 0; border: 1px solid #d6ae5055; border-radius: 14px; background: #d6ae5009; }
+.home-demo-leg { min-width: 0; text-align: center; }
+.home-demo-leg + .home-demo-leg { border-left: 1px solid var(--rule); }
+.home-demo-leg > div { display: flex; justify-content: center; align-items: center; gap: 6px; }
+.home-demo-leg b { font: 750 14px var(--mono); color: var(--ink); }
+.home-demo-leg span { font: 600 11px var(--sans); }
+.home-demo-leg .short { color: #f17e89; }
+.home-demo-leg .long { color: #57d9b0; }
+.home-demo-leg strong { display: block; margin-top: 9px; font: 650 16px var(--mono); font-variant-numeric: tabular-nums; color: #57d9b0; }
+.home .home-slogan { text-align: center; }
+.home .home-slogan h1 { margin: 0 auto 18px; max-width: 1000px; font-size: clamp(30px, 4.3vw, 58px); line-height: 1.2; }
+.home .home-slogan .lede { margin: 0 auto; max-width: 850px; }
+.home .hero-doors { margin-top: 36px; }
+:root[data-theme="light"] .home-strategy-showcase { background: var(--surface); }
+:root[data-theme="light"] .home-demo-basket { border-color: var(--rule); background: var(--surface-2); }
+:root[data-theme="light"] .home-demo-total > strong, :root[data-theme="light"] .home-demo-leg strong, :root[data-theme="light"] .home-demo-leg .long { color: var(--up); }
+:root[data-theme="light"] .home-demo-total[data-negative="true"] > strong, :root[data-theme="light"] .home-demo-leg strong[data-negative="true"], :root[data-theme="light"] .home-demo-leg .short { color: var(--dn); }
+@media (max-width: 600px) {
+  .home .hero-in { padding-top: 18px; }
+  .home-strategy-showcase { padding: 16px 12px; margin-bottom: 30px; border-radius: 18px; }
+  .home-demo-heading { font-size: 10px; gap: 5px; }
+  .home-demo-stage { padding-top: 22px; }
+  .home-demo-total > strong { font-size: clamp(36px, 9vw, 48px); }
+  .home-demo-trace { height: 78px; }
+  .home-demo-basket { padding: 12px 0; border-radius: 10px; }
+  .home-demo-leg > div { flex-wrap: wrap; gap: 2px 4px; }
+  .home-demo-leg b { font-size: 11px; }
+  .home-demo-leg span { font-size: 10px; }
+  .home-demo-leg strong { font-size: 12px; margin-top: 7px; }
+  .home .home-slogan h1 { font-size: 30px; }
+  .home .home-slogan .lede { font-size: 14px; }
+}
+@media (max-width: 760px) {
+  .home .home-slogan { text-align: left; }
+  .home .home-slogan h1 { margin-inline: 0; text-wrap: pretty; line-height: 1.22; }
+  .home .home-slogan .lede { margin-inline: 0; line-height: 1.65; }
+  html[lang="en"] .home .home-slogan h1 { max-width: 22ch; font-size: clamp(28px, 7.2vw, 34px); letter-spacing: -.025em; }
+}

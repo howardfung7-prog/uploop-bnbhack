@@ -1,0 +1,148 @@
+.competition-tabs { display:flex; gap:6px; margin:0 0 14px; padding:5px; width:fit-content; border:1px solid var(--rule); border-radius:15px; background:var(--surface); }
+.competition-tabs button { border:0; border-radius:10px; padding:11px 22px; background:transparent; color:var(--ink-soft); font-weight:750; cursor:pointer; transition:.2s ease; }
+.competition-tabs button:disabled { opacity:.4; cursor:not-allowed; }
+.competition-tabs button[aria-pressed=true] { color:var(--competition-ink); box-shadow:0 3px 14px color-mix(in srgb, var(--competition-accent) 20%, transparent); background:var(--competition-accent); }
+.competition-tabs .competition-tab-summit { --competition-accent:var(--tier-three-bg); --competition-ink:var(--tier-three-ink); }
+.competition-tabs .competition-tab-daily { --competition-accent:var(--tier-five-bg); --competition-ink:var(--tier-five-ink); }
+.competition-tabs .competition-tab-activity { --competition-accent:var(--tier-open-bg); --competition-ink:var(--tier-open-ink); }
+.competition-disabled { padding:28px; border:1px solid var(--rule); border-radius:14px; color:var(--ink-soft); text-align:center; }
+.competition-activity + .lobby { border-color:color-mix(in srgb, var(--tier-open-fg) 40%, transparent); }
+.arena.activity-active > .lobby, .arena.activity-active > .pc.rules { display:block; }
+.arena:not(.activity-active) > .lobby, .arena:not(.activity-active) > .pc.rules { display:none; }
+.arena.activity-active .lobby-head h2,
+.arena.activity-active .sch-sec { color:var(--tier-open-fg); }
+.arena.activity-active .segs button.on { background:var(--tier-open-bg); color:var(--tier-open-ink); }
+.crazy-race.daily-arena { --race-color:var(--strategy-blue); --race-gold:var(--strategy-blue); border-color:color-mix(in srgb, var(--strategy-blue) 32%, transparent); background:linear-gradient(150deg,color-mix(in srgb, var(--strategy-blue) 16%, var(--surface)),var(--surface) 80%); }
+.daily-arena .crazy-race-title h2 { overflow-wrap:anywhere; text-wrap:pretty; }
+.daily-content { padding:0 28px 28px; }
+.daily-total { text-align:right; flex:none; color:#cdd6f6; }
+.daily-total>span { display:block; font-size:12px; }
+.daily-total>b { color:#fff; display:block; white-space:nowrap; font:750 30px var(--mono); margin-top:5px; }
+.daily-total small { font:600 12px var(--sans); }
+.daily-total>em { display:block; font-style:normal; font-size:12px; color:var(--rally); margin-top:4px; }
+.daily-toolbar,.daily-actions { display:flex; gap:12px; align-items:center; flex-wrap:wrap; margin:16px 0; }
+.daily-toolbar { justify-content:space-between; font-size:13px; color:#adb9d6; }
+.daily-arena .act { background:var(--strategy-blue); border-color:var(--strategy-blue); color:#172040; }
+.daily-arena .act.ghosted { background:transparent; color:var(--strategy-blue); border:1px solid color-mix(in srgb, var(--strategy-blue) 32%, transparent); }
+.daily-cards { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:14px; }
+.daily-card { text-align:left; padding:20px; border:1px solid #819ae538; border-radius:17px; background:linear-gradient(140deg,#ffffff08,#ffffff02); color:#e6edff; cursor:pointer; min-width:0; transition:transform .2s,border-color .2s; }
+.daily-card:hover { transform:translateY(-3px); border-color:var(--strategy-blue); }
+.daily-card-top,.daily-card>div { display:flex; justify-content:space-between; gap:8px; align-items:center; }
+.daily-card small,.daily-card p { font-size:12px; color:#a5b3d0; }
+.daily-card h3 { margin:16px 0 8px; font-size:19px; overflow-wrap:anywhere; }
+.daily-card>div { margin-top:20px; font-size:13px; }
+.daily-card.pinned { border-color:var(--rally); }
+.daily-pin { display:inline-block; font-style:normal; font-size:11px; margin-bottom:10px; padding:0 5px; border:1px solid var(--rally); color:var(--rally); letter-spacing:.06em; }
+.daily-card .daily-card-bonus { margin:6px 0 0; text-align:right; color:var(--rally); }
+.daily-card strong { color:var(--strategy-blue); white-space:nowrap; }
+.daily-time { color:#d5dff5; display:grid; gap:6px; margin:20px 0; font-size:14px; }
+.daily-time small { opacity:.65; }
+.daily-progress { position:relative; height:78px; border-radius:16px; border:1px solid #92a8ff55; background:#0a1221; overflow:hidden; box-shadow:inset 0 2px 20px #0004; }
+.daily-progress-fill { position:absolute; inset:0 auto 0 0; background:linear-gradient(110deg,color-mix(in srgb, var(--strategy-blue) 55%, #081322),var(--strategy-blue)); transition:width 1s linear; }
+.daily-progress-fill::after { content:''; position:absolute; inset:0; background:linear-gradient(100deg,transparent,#ffffff24,transparent); animation:daily-flow 4s linear infinite; }
+.daily-progress-label { position:relative; height:100%; display:flex; align-items:center; justify-content:space-between; gap:12px; padding:0 22px; color:#eef3ff; font:600 14px var(--mono); }
+.daily-progress-label b { font-size:20px; }
+.daily-estimate { display:grid; gap:4px; padding:8px 14px; background:#98aaff0d; border:1px solid #879de333; border-radius:10px; color:#d5def7; }
+.daily-estimate small { font-size:11px; color:#aab6d1; }
+.daily-estimate b { font:650 15px var(--mono); }
+.daily-performance { margin:24px 0; padding:20px; border:1px solid #90a6dc30; border-radius:16px; background:#0b152260; color:#cdd7ee; }
+.daily-performance-head { display:flex; align-items:center; gap:16px; flex-wrap:wrap; }
+.daily-performance-head h3 { margin:0 auto 0 0; font-size:16px; }
+.daily-performance-head>b { color:var(--strategy-yellow); font:700 20px var(--mono); }
+.daily-rank { color:var(--strategy-blue); font:750 25px var(--mono); animation:daily-rank .5s ease-out; }
+.daily-rank small { font-size:14px; }
+.daily-legs { display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:10px; margin-top:16px; }
+.daily-legs>div { display:grid; gap:5px; padding:8px; border-top:2px solid; min-width:0; }
+.daily-legs b { font-size:13px; overflow-wrap:anywhere; }
+.daily-legs small { font-weight:400; font-size:10px; }
+.daily-legs strong { font:600 14px var(--mono); }
+.daily-chart { display:block; width:100%; height:266px; margin-top:8px; color:#94a4b4; }
+.daily-chart text { fill:currentColor; font:9px var(--mono); }
+.daily-chart-positive { fill:#58d9ad04; }
+.daily-chart-negative { fill:#ff7b8905; }
+.daily-chart-grid { stroke:currentColor; stroke-opacity:.18; stroke-width:.6; stroke-dasharray:2 5; }
+.daily-chart-zero { stroke:currentColor; stroke-opacity:.65; stroke-width:1; }
+.daily-chart-trace { fill:none; stroke-width:1.4; stroke-linecap:round; stroke-linejoin:round; }
+:root[data-theme=light] .daily-chart { color:#637788; }
+.daily-performance>small { font-size:11px; color:#8e9fbf; }
+.daily-rank-history { display:flex; gap:8px; overflow:auto; margin-top:12px; padding-bottom:4px; max-height:75px; }
+.daily-rank-history span { display:grid; gap:4px; padding:7px; border:1px solid #889ee133; border-radius:6px; font:10px var(--mono); flex:none; }
+.daily-board { max-height:550px; overflow:auto; }
+.daily-board-row { display:grid; grid-template-columns:72px minmax(0,1fr) auto; gap:12px; padding:16px 8px; align-items:center; border-bottom:1px solid #8193c527; color:#d3dcf2; }
+.daily-board-row.mine { background:#98a6ff10; }
+.daily-place { color:#a8b8ef; font:700 17px var(--mono); }
+.daily-player>small { display:inline-block; max-width:35%; margin-left:6px; overflow:hidden; text-overflow:ellipsis; vertical-align:middle; opacity:.6; font-size:11px; white-space:nowrap; }
+.daily-player>strong { display:inline-block; max-width:60%; overflow:hidden; text-overflow:ellipsis; vertical-align:middle; white-space:nowrap; }
+.daily-player>strong.daily-money-circle { color:var(--strategy-yellow); }
+.daily-player>div,.daily-draft { display:flex; flex-wrap:wrap; gap:3px; margin-top:4px; }
+.daily-player span,.daily-draft span { border:1px solid #99ace22a; padding:2px 4px; border-radius:4px; font-size:9px; line-height:1.25; white-space:nowrap; }
+.daily-result { text-align:right; font-family:var(--mono); }
+.daily-result small { display:block; margin-top:5px; opacity:.7; font-size:11px; }
+.daily-rules { margin-top:22px; border-top:1px solid #8193c530; padding-top:16px; color:#a7b5d2; font-size:12px; line-height:1.8; }
+.daily-rules summary { cursor:pointer; font-weight:700; }
+.daily-empty { text-align:center; padding:55px 15px; color:#a9b7d3; }
+.daily-notice { padding:12px 16px; border:1px solid #44b59666; color:#67dcbc; border-radius:10px; display:flex; justify-content:space-between; }
+.daily-notice button { border:0; background:none; color:inherit; cursor:pointer; }
+.daily-error { color:#df7683; padding:10px 0; }
+.daily-error button { margin-left:12px; }
+.daily-overlay { position:fixed; inset:0; z-index:1200; background:#070d1ac7; backdrop-filter:blur(8px); display:flex; justify-content:center; align-items:center; padding:18px; }
+.daily-modal { position:relative; width:min(100%,480px); max-height:90dvh; overflow:auto; background:var(--surface,#181c24); color:var(--ink); border:1px solid var(--rule); border-radius:22px; padding:28px; box-shadow:0 25px 100px #0007; }
+.daily-modal-close { position:absolute; right:16px; top:12px; background:none; border:0; color:var(--ink); font-size:25px; cursor:pointer; }
+.daily-modal h2 { margin:0 28px 22px 0; }
+.daily-modal label { display:grid; gap:8px; margin:16px 0; font-size:13px; }
+.daily-modal input,.daily-modal select { width:100%; padding:12px; background:var(--bg); border:1px solid var(--rule); color:var(--ink); border-radius:9px; box-sizing:border-box; }
+.daily-modal select { appearance:auto; cursor:pointer; }
+.daily-modal p { font-size:13px; line-height:1.6; }
+.daily-modal form>.act { width:100%; margin-top:15px; }
+.daily-bonus-field { margin:16px 0; }
+.daily-bonus-field>label { margin:0; }
+@keyframes daily-flow { from {transform:translateX(-100%)} to {transform:translateX(100%)} }
+@keyframes daily-rank { from {transform:translateY(-6px);opacity:.5} to {transform:translateY(0);opacity:1} }
+:root[data-theme=light] .crazy-race.daily-arena { background:var(--surface); border-color:var(--rule); }
+/* §71.183: text uses the shared inks; blue is kept for the kicker, amounts, rank and progress only, not a navy text family of its own */
+:root[data-theme=light] .daily-arena .crazy-race-title h2,:root[data-theme=light] .daily-total>b { color:var(--ink); }
+:root[data-theme=light] .daily-card { background:#fff; color:var(--ink); }
+:root[data-theme=light] .daily-card strong { color:var(--strategy-blue); }
+:root[data-theme=light] .daily-card small,:root[data-theme=light] .daily-card p,:root[data-theme=light] .daily-toolbar,:root[data-theme=light] .daily-time,:root[data-theme=light] .daily-total,:root[data-theme=light] .daily-rules { color:var(--ink-mute); }
+:root[data-theme=light] .daily-performance { background:#fff9; color:var(--ink-soft); }
+:root[data-theme=light] .daily-board-row,:root[data-theme=light] .daily-estimate { color:var(--ink-soft); }
+:root[data-theme=light] .daily-arena .act.ghosted { color:var(--strategy-blue); }
+:root[data-theme=light] .daily-rank { color:var(--strategy-blue); }
+:root[data-theme=light] .daily-progress {
+  background:#e8f0fa;
+  border-color:color-mix(in srgb, var(--strategy-blue) 42%, var(--rule));
+  box-shadow:inset 0 2px 14px rgba(38,76,126,.12);
+}
+:root[data-theme=light] .daily-progress-fill {
+  background:linear-gradient(110deg,color-mix(in srgb, var(--strategy-blue) 34%, #fff),var(--strategy-blue));
+}
+:root[data-theme=light] .daily-progress-label { color:var(--ink); text-shadow:none; }
+:root[data-theme=light] .daily-progress-fill::after { background:linear-gradient(100deg,transparent,#ffffff66,transparent); }
+:root[data-theme=light] .daily-estimate { background:var(--live-bg); border-color:var(--rule); color:var(--ink-soft); }
+:root[data-theme=light] .daily-estimate small { color:var(--ink-mute); }
+:root[data-theme=light] .daily-notice { color:var(--ink-soft); border-color:var(--rule); background:var(--live-bg); }
+:root[data-theme=light] .daily-modal { box-shadow:0 25px 80px rgba(20,20,20,.16); }
+:root[data-theme=light] .daily-overlay { background:rgba(35,42,55,.32); }
+@media(max-width:760px) { .daily-cards { grid-template-columns:repeat(2,minmax(0,1fr)); } .daily-total>b { font-size:23px; } }
+@media(max-width:520px) { .competition-tabs { width:100%; box-sizing:border-box; } .competition-tabs button { flex:1; padding:10px 8px; font-size:13px; } .daily-content { padding:0 15px 20px; } .daily-cards { grid-template-columns:1fr; } .daily-arena .crazy-race-head { gap:16px; } .daily-total { text-align:left; } .daily-progress-label { padding:0 12px; font-size:11px; } .daily-progress-label b { font-size:16px; } .daily-performance { padding:12px; } .daily-legs { grid-template-columns:repeat(3,minmax(0,1fr)); gap:6px; } .daily-performance-head { gap:8px; } .daily-performance-head h3 { width:100%; } .daily-board-row { grid-template-columns:48px minmax(0,1fr) auto; gap:6px; } .daily-place { font-size:13px; } .daily-result { font-size:12px; } .daily-modal { padding:22px; } }
+@media(max-width:400px) {
+  .daily-total>b { max-width:100%; overflow:hidden; text-overflow:ellipsis; font-size:21px; }
+  .daily-progress-label { gap:6px; padding-inline:8px; }
+  .daily-progress-label span { min-width:0; overflow-wrap:anywhere; }
+  .daily-progress-label b { flex:0 0 auto; font-size:15px; }
+  .daily-create-button { min-width:0; width:100%; }
+}
+@media(prefers-reduced-motion:reduce) { .daily-progress-fill::after,.daily-rank { animation:none; } .daily-progress-fill { transition:none; } }
+
+.daily-arena .crazy-race-k { color:var(--strategy-blue); }
+.daily-arena .crazy-race-k::before { background:var(--strategy-blue); }
+
+
+/* §71.183: white on the pastel 5T / NT fills was about 2.3–2.8:1; every pressed tab now takes its tier ink, like the summit tab already did */
+:root[data-theme=light] .daily-arena .act:not(.ghosted) { color:#fff; }
+:root[data-theme=light] .competition-tabs button[aria-pressed=true] { color:var(--competition-ink); }
+:root[data-theme=light] .arena.activity-active .segs button.on { color:var(--tier-open-ink); }
+
+.daily-arena .daily-create-button { min-width: 190px; min-height: 68px; padding: 12px 22px; display: inline-flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; }
+.daily-create-button strong { font-size: 17px; line-height: 1.2; }
+.daily-create-button small { font: 500 11px/1.3 var(--sans); opacity: .86; }

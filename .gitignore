@@ -1,0 +1,12 @@
+node_modules/
+dist/
+*.tsbuildinfo
+.env
+.env.*
+!.env.example
+__pycache__/
+*.pyc
+.DS_Store
+contracts/out/
+contracts/cache/
+contracts/lib/
